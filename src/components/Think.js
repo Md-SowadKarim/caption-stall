@@ -1,6 +1,8 @@
 import React from 'react'
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Think = () => {
+  const {  user } = useUserAuth();
   return (
 
           <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0">
@@ -39,7 +41,7 @@ const Think = () => {
                 </p>
                 <div className="flex items-center">
                   <a
-                    href="/login"
+                    href={user? "/feature":"/login"}
                     className="inline-flex border-orange-500  items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-orange-600 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   >
                     Get started

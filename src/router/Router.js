@@ -19,22 +19,34 @@ import Well from '../pages/blogs_Next/Well'
 import Life from '../pages/blogs_Next/Life'
 import Gellary from '../pages/Gellary'
 import Footer from '../layouts/Footer'
+
+import { UserAuthContextProvider } from "../context/UserAuthContext";
+import ProtectedRoute from "./ProtectedRoute";
+
 //import MyApp from '../pages/Contact'
 import Contact from '../pages/Contact'
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    
+    <UserAuthContextProvider>
+      <BrowserRouter>
     <Header/>
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
-        <Route path='/content' element={<Content/>}/>
+        <Route path='/content' element={ <ProtectedRoute>
+                    <Content />
+                  </ProtectedRoute>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/blogs' element={<Blogs/>}/>
+        <Route path='/blogs' element={ <ProtectedRoute>
+                    <Blogs />
+                  </ProtectedRoute>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/feature' element={<Features/>}/>
+        <Route path='/feature' element={ <ProtectedRoute>
+                    <Features  />
+                  </ProtectedRoute>}/>
         <Route path='/*' element={<Error/>}/>
 
 
@@ -54,6 +66,8 @@ const Router = () => {
     </Routes>
     <Footer/>
     </BrowserRouter>
+    </UserAuthContextProvider>
+    
   )
 }
 

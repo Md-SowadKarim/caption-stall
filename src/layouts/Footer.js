@@ -1,6 +1,8 @@
 import React from 'react'
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Footer = () => {
+    const {  user } = useUserAuth();
     return (
         <div className="mx-auto container xl:px-20 lg:px-12 sm:px-6 px-4 px-4 py-12">
             <div className="flex flex-col items-center justify-center">
@@ -10,7 +12,7 @@ const Footer = () => {
                 <div className="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-8">
                     <p className="hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"><a href='/about'>About</a></p>
                     <p className="hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"> <a href='/contact'>Contact us</a>  </p>
-                    <p className="hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"><a href='/register'>Register</a></p>
+                    <p className="hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"><a  href={user? "/feature":"/register"}>Register</a></p>
                  
                 </div>
                 <div className="flex items-center gap-x-8 mt-6">
