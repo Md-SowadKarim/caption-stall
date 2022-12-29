@@ -25,6 +25,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 //import MyApp from '../pages/Contact'
 import Contact from '../pages/Contact'
+import Review from '../pages/Review'
 
 const Router = () => {
   return (
@@ -35,6 +36,7 @@ const Router = () => {
     <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route path='/review' element={<Review/>}/>
         <Route path='/content' element={ <ProtectedRoute>
                     <Content />
                   </ProtectedRoute>}/>
